@@ -1,4 +1,4 @@
-# Bioinformatics for Influenza Genome Reconstruction: A Hands-On Workshop
+# Bioinformatics for Influenza Genome Reconstruction: A Hands-On Workshop - Morocco
 A hands-on introduction to Bioinformatics for Nanopore data from Influenza in the context of the IGS project.
 The workshop is held from March 8 to March 15, 2024 in Windhoek, Namibia.
 
