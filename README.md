@@ -1,80 +1,86 @@
 # Genomic Surveillance of Respiratory Viruses
-## 🇲🇦 Bioinformatics Workshop - Morocco, May 2026
 
-This repository contains the materials and documentation for the workshop on genomic surveillance of Influenza and SARS-CoV-2.
+## 🇲🇦 Bioinformatics Workshop - Rabat, Morocco, May 2026
+
+This repository contains the materials and documentation for the workshop on genomic surveillance of Influenza A and SARS-CoV-2.
 
 ## Instructors
 * Simon Tausch
 * Vladimir Bajić 
 
----
-
 ## Schedule
 
----
 ### Day 01 | 2026-05-04 | Monday
 
-| Time | Activity |
-|------|----------|
-| 09:00 | Check-in |
-| 09:30 | Ice-breaker and introductions |
-| 11:00 | Talk: Linux Intro |
-| 13:00 | Icebreaker or interactive learning |
-| 13:30 | Hands-On: Linux Intro  |
-| 15:00 | Hands-On: Linux advanced Intro |
-| 16:45 | Wrap-up |
-
----
+| Time          | Activity                 |
+|---------------|--------------------------|
+| 09:00 - 09:30 | Check-in                 |
+| 09:30 - 10:45 | Setting up laptops       |
+| 10:45 - 11:00 | ☕ Break                 |
+| 11:00 - 12:00 | Talk: Linux Intro        |
+| 12:00 - 13:00 | 🍽️ Lunch Break           |
+| 13:00 - 14:45 | Hands-On: Linux Intro    |
+| 14:45 - 15:00 | ☕ Break                 |
+| 15:00 - 16:45 | Hands-On: Linux Advanced |
+| 16:45 - 17:00 | Recap & Daily Feedback   |
 
 ### Day 02 | 2026-05-05 | Tuesday
 
-| Time | Activity |
-|------|----------|
-| 09:00 | Check-in and Recap |
-| 09:30 | Talk: Data Management and Software Management with Conda and Containers |
-| 11:00 | Hands-On: Software management with Conda |
-| 13:00 | Participant presentation |
-| 13:30 | Talk: QC using fastp and nanoplot |
-| 15:00 | Hands-On: QC using fastp and nanoplot |
-| 16:45 | Wrap-up |
-
----
+| Time          | Activity                                 |
+|---------------|------------------------------------------|
+| 09:00 - 09:30 | Recap                                    |
+| 09:30 - 10:45 | Talk: Data and Software Management       |
+| 10:45 - 11:00 | ☕ Break                                 |
+| 11:00 - 12:00 | Hands-On: Software Management with Conda |
+| 12:00 - 13:00 | 🍽️ Lunch Break                           |
+| 13:00 - 13:30 | Participant Presentation                 |
+| 13:30 - 14:45 | Talk: QC using fastp and nanoplot        |
+| 14:45 - 15:00 | ☕ Break                                 |
+| 15:00 - 16:45 | Hands-On: QC using fastp and nanoplot    |
+| 16:45 - 17:00 | Recap & Daily Feedback                   |
 
 ### Day 03 | 2026-05-06 | Wednesday
 
-| Time | Activity |
-|------|----------|
-| 09:00 | Check-in and Recap |
-| 09:30 | Talk: Mapping and reference based assembly |
-| 11:00 | Hands-On: Mapping with minimap2 |
-| 13:00 | Participant presentation |
-| 13:30 | Talk?: variant calling, VCF, MIRA-NF |
-| 15:00 | Hands-On: MIRA-NF |
-| 16:45 | Wrap-up |
-
----
+| Time          | Activity                                   |
+|---------------|--------------------------------------------|
+| 09:00 - 09:30 | Recap                                      |
+| 09:30 - 10:45 | Talk: Mapping and Reference Based Assembly |
+| 10:45 - 11:00 | ☕ Break                                   |
+| 11:00 - 12:00 | Hands-On: Mapping with minimap2            |
+| 12:00 - 13:00 | 🍽️ Lunch Break                             |
+| 13:00 - 13:30 | Participant Presentation                   |
+| 13:30 - 14:45 | Talk: Variant Calling and MIRA-NF          |
+| 14:45 - 15:00 | ☕ Break                                   |
+| 15:00 - 16:45 | Hands-On: MIRA-NF                          |
+| 16:45 - 17:00 | Recap & Daily Feedback                     |
 
 ### Day 04 | 2026-05-07 | Thursday
 
-| Time | Activity |
-|------|----------|
-| 09:00 | Check-in and Recap |
-| 09:30 | Talk: Phylogenetics |
-| 11:00 | Hands-On: IQ-TREE |
-| 13:00 | Participant presentation |
-| 13:30 | Talk?: Nextclade |
-| 15:00 | Hands-On: Nextclade |
-| 16:45 | Wrap-up |
-
----
+| Time          | Activity                 |
+|---------------|--------------------------|
+| 09:00 - 09:30 | Recap                    |
+| 09:30 - 10:45 | Talk: Phylogenetics      |
+| 10:45 - 11:00 | ☕ Break                 |
+| 11:00 - 12:00 | Hands-On: IQ-TREE        |
+| 12:00 - 13:00 | 🍽️ Lunch Break           |
+| 13:00 - 13:30 | Participant Presentation |
+| 13:30 - 14:45 | Talk: Nextclade          |
+| 14:45 - 15:00 | ☕ Break                 |
+| 15:00 - 16:45 | Hands-On: Nextclade      |
+| 16:45 - 17:00 | Recap & Daily Feedback   |
 
 ### Day 05 | 2026-05-08 | Friday 
 
-| Time | Activity |
-|------|----------|
-| 09:00 | Check-in and Recap |
-| 09:30 | Hands-On: Bring your own Data|
-| 15:00 | Participant presentation |
-| 16:45 | Wrap-up & Goodbys |
-
----
+| Time          | Activity                                 |
+|---------------|------------------------------------------|
+| 09:00 - 09:30 | Recap                                    |
+| 09:30 - 10:45 | Hands-On: Bring Your Own Data            |
+| 10:45 - 11:00 | ☕ Break                                 |
+| 11:00 - 12:00 | Hands-On: Bring Your Own Data            |
+| 12:00 - 13:00 | 🍽️ Lunch Break                           |
+| 13:00 - 13:30 | Participant Presentation                 |
+| 13:30 - 14:45 | Hands-On: Bring Your Own Data            |
+| 14:45 - 15:00 | ☕ Break                                 |
+| 15:00 - 16:00 | Hands-On: Bring Your Own Data            |
+| 16:00 - 16:30 | Recap & Workshop Feedback                |
+| 16:30 - 17:00 | Rarewell                                 |
