@@ -47,7 +47,7 @@ By the end of Day 01, participants should be able to:
 - Avoid editing lesson files directly during teaching.
 - Prefer relative paths inside the repository whenever possible.
 
-### Slides
+## Slides
 
 - [Workshop Content and Structure](https://docs.google.com/presentation/d/1iOgXkMe4H57Lz6YaMutH6Nb4Axd_WMsq)
 - [Introduction to Linux](https://docs.google.com/presentation/d/1jEvhIUVv_nTQVxr0yPwji75wMrpWIJsW)
