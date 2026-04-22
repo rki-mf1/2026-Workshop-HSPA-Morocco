@@ -1,5 +1,6 @@
 ````markdown
-# Day 1 – Linux Introduction & Environment Setup
+
+# Day 01 – Linux Introduction & Environment Setup
 
 ## Overview
 

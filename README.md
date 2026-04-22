@@ -4,24 +4,15 @@
 This repository contains the materials and documentation for the workshop on genomic surveillance of Influenza and SARS-CoV-2.
 
 ## Instructors
-* Vladimir Bajic, Simon Tausch
+* Simon Tausch
+* Vladimir Bajić 
 
 ---
 
 ## Schedule
 
 ---
-
-### Thursday, 2026-04-30
-
-| Time | Activity |
-|------|----------|
-| 09:00 | Installing server |
-| 13:00 | Installing server |
-
----
-
-### Monday, 2026-05-04
+### Day 01 | 2026-05-04 | Monday
 
 | Time | Activity |
 |------|----------|
@@ -35,7 +26,7 @@ This repository contains the materials and documentation for the workshop on gen
 
 ---
 
-### Tuesday, 2026-05-05
+### Day 02 | 2026-05-05 | Tuesday
 
 | Time | Activity |
 |------|----------|
@@ -49,7 +40,7 @@ This repository contains the materials and documentation for the workshop on gen
 
 ---
 
-### Wednesday, 2026-05-06
+### Day 03 | 2026-05-06 | Wednesday
 
 | Time | Activity |
 |------|----------|
@@ -63,7 +54,7 @@ This repository contains the materials and documentation for the workshop on gen
 
 ---
 
-### Thursday, 2026-05-07
+### Day 04 | 2026-05-07 | Thursday
 
 | Time | Activity |
 |------|----------|
@@ -77,7 +68,7 @@ This repository contains the materials and documentation for the workshop on gen
 
 ---
 
-### Friday, 2026-05-08
+### Day 05 | 2026-05-08 | Friday 
 
 | Time | Activity |
 |------|----------|
