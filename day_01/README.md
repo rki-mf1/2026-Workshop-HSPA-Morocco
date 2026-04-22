@@ -53,4 +53,8 @@ By the end of Day 01, participants should be able to:
 - [Introduction to Linux](https://docs.google.com/presentation/d/1jEvhIUVv_nTQVxr0yPwji75wMrpWIJsW)
 - [Simple Shell Scripts](https://docs.google.com/presentation/d/1BvXDtCLKArlOBK51v7CPbSxAaW6g3J8V)
 
-# [Back to main page](README.md)
+---
+
+[⬅ Back to main page](../README.md)
+
+---
