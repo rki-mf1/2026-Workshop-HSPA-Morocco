@@ -83,4 +83,4 @@ This repository contains the materials and documentation for the workshop on gen
 | 14:45 - 15:00 | ☕ Break                                 |
 | 15:00 - 16:00 | Hands-On: Bring Your Own Data            |
 | 16:00 - 16:30 | Recap & Workshop Feedback                |
-| 16:30 - 17:00 | Rarewell                                 |
+| 16:30 - 17:00 | Farewell                                 |
