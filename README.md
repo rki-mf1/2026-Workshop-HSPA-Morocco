@@ -10,7 +10,9 @@ This repository contains the materials and documentation for the workshop on gen
 
 ## Schedule
 
-### Day 01 | 2026-05-04 | Monday
+### [Day 01 | 2026-05-04 | Monday](day_01/README.md)
+
+Linux introduction, terminal basics, navigation, file management, viewing files, editing text, compression, and searching.
 
 | Time          | Activity                 |
 |---------------|--------------------------|
@@ -24,7 +26,7 @@ This repository contains the materials and documentation for the workshop on gen
 | 15:00 - 16:45 | Hands-On: Linux Advanced |
 | 16:45 - 17:00 | Recap & Daily Feedback   |
 
-### Day 02 | 2026-05-05 | Tuesday
+### [Day 02 | 2026-05-05 | Tuesday](day_02/README.md)
 
 | Time          | Activity                                 |
 |---------------|------------------------------------------|
@@ -39,7 +41,7 @@ This repository contains the materials and documentation for the workshop on gen
 | 15:00 - 16:45 | Hands-On: QC using fastp and nanoplot    |
 | 16:45 - 17:00 | Recap & Daily Feedback                   |
 
-### Day 03 | 2026-05-06 | Wednesday
+### [Day 03 | 2026-05-06 | Wednesday](day_03/README.md)
 
 | Time          | Activity                                   |
 |---------------|--------------------------------------------|
@@ -54,7 +56,7 @@ This repository contains the materials and documentation for the workshop on gen
 | 15:00 - 16:45 | Hands-On: MIRA-NF                          |
 | 16:45 - 17:00 | Recap & Daily Feedback                     |
 
-### Day 04 | 2026-05-07 | Thursday
+### [Day 04 | 2026-05-07 | Thursday](day_04/README.md)
 
 | Time          | Activity                 |
 |---------------|--------------------------|
@@ -69,7 +71,7 @@ This repository contains the materials and documentation for the workshop on gen
 | 15:00 - 16:45 | Hands-On: Nextclade      |
 | 16:45 - 17:00 | Recap & Daily Feedback   |
 
-### Day 05 | 2026-05-08 | Friday 
+### [Day 05 | 2026-05-08 | Friday](day_05/README.md)
 
 | Time          | Activity                                 |
 |---------------|------------------------------------------|
@@ -84,3 +86,19 @@ This repository contains the materials and documentation for the workshop on gen
 | 15:00 - 16:00 | Hands-On: Bring Your Own Data            |
 | 16:00 - 16:30 | Recap & Workshop Feedback                |
 | 16:30 - 17:00 | Farewell                                 |
+
+## Recommended setup
+
+Clone the repository into your home directory:
+
+```bash
+cd ~
+git clone https://github.com/rki-mf1/2026-Workshop-HSPA-Morocco.git
+cd ~/2026-Workshop-HSPA-Morocco
+```
+
+## How to use this repository
+
+- Start at the `README.md` of the relevant day.
+- Follow the exercises in numerical order.
+- Use a `scratch` or `practice` directory when a lesson asks you to create, move, rename, or delete files.
