@@ -1,7 +1,3 @@
-[🏠 Back to main page](../README.md)
-
----
-
 # Day 01 — Linux Basics, Navigation, and File Management
 
 ## Learning goals
