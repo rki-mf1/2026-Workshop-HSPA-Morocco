@@ -1,292 +1,593 @@
-[🏠 Back to main page](../README.md)
+[⬅ Back to main page](../README.md)
 
----
-
-# Day 01 — Viewing, Editing, Compressing, and Searching Files
+# Viewing, Editing, Compressing, and Searching Files
 
 ## Learning goals
 
 By the end of this lesson, you should be able to:
 
-- inspect files with `cat`, `less`, `head`, and `tail`
-- understand when compressed files are useful
-- work with `.gz` files using `gzip`, `gunzip`, `zcat`, and `zless`
-- edit text files with `nano`
+- unpack and inspect `.tar.gz` archives
+- work with compressed `.gz` files using `gzip`, `gunzip`, `zcat`, and `zless`
 - search text with `grep`
 - combine commands using pipes (`|`)
+- extract columns from tabular files
+- write and run a Bash scripts
 
 ## Working assumption
 
-This lesson assumes the repository was cloned into the home directory:
+This lesson assumes the repository is in your home directory:
 
 ```bash
 cd ~/2026-Workshop-HSPA-Morocco/day_01
 ```
 
-## 1. Create a safe text practice area
+## Before you start
+
+Open a terminal and move into the workshop repository:
 
 ```bash
-mkdir -p linux_text_practice
-cd linux_text_practice
+cd ~/2026-Workshop-HSPA-Morocco/day_01
 ```
 
-Create a small text file:
+Create a safe practice area for this session:
 
 ```bash
-printf "sample_1\nInfluenza A\nSARS-CoV-2\nBioinformatics workshop\n" > notes.txt
+mkdir -p scratch_2
+cd scratch_2
 ```
 
-Check that the file exists:
+Check where you are:
+
+```bash
+pwd
+```
+
+## 1. Working with `.tar.gz` archives
+
+*What is a `.tar.gz` file?*
+
+In bioinformatics we often work with large datasets and collections of many related files. To make them easier to share and to reduce their size, these files are frequently packaged into `.tar.gz` archives.
+
+- `.tar` → stands for [tape archive](https://en.wikipedia.org/wiki/Tar_(computing)). It combines multiple files and folders into a single archive (like putting them into a box), but does not compress them.
+
+- `.gz` → stands for [gzip compression](https://en.wikipedia.org/wiki/Gzip). It shrinks the size of the file using compression.
+
+When combined, `.tar.gz` means:
+- Multiple files and/or directories are bundled together into one archive.
+- That archive is then compressed to save space.
+
+
+We prepared few of them in `data/tutorial_data`. First, copy them in your current working directory:
+
+```bash
+# copy it to your current working directory (~/2026-Workshop-HSPA-Morocco/day_01/scratch_2)
+cp ~/2026-Workshop-HSPA-Morocco/data/tutorial_data/*.tar.gz .
+```
+
+You can **extract** `.tar.gz` like this:
+
+```bash
+tar -xvzf references.tar.gz
+tar -xvzf SRR32055875_irma_output.tar.gz
+```
+
+### Meaning of the options
+
+- `-x` — extract
+- `-v` — [verbose](https://en.wikipedia.org/wiki/Verbose_mode) output
+- `-z` — archive is gzip-compressed
+- `-f` — file name follows
+
+Check what was extracted:
 
 ```bash
 ls -lh
 ```
 
-## 2. View file contents
-
-Display the whole file:
+If `tree` is installed, view the directory structure:
 
 ```bash
-cat notes.txt
+tree
 ```
 
-Open it page by page:
+If `tree` is not available, use:
 
 ```bash
-less notes.txt
+ls -R
 ```
 
-Show only the first lines:
+Compare the sizes of compressed file vs uncompressed directory:
 
 ```bash
-head notes.txt
+du -hs references.tar.gz
+du -hs references
 ```
 
-Show only the last lines:
+Try making your first `.tar.gz`:
 
 ```bash
-tail notes.txt
+tar -cvzf my_first_tar_file.tar.gz references
 ```
 
-### Questions
+### 💬 Discussion
 
-- When is `less` better than `cat`?
-- How do you quit `less`?
-- Which commands are best for very large files?
+- Why are `.tar.gz` archives useful in bioinformatics?
+- What is the difference between compressing and de-compressing `tar.gz` files?
 
-## 3. Create and edit files with nano
+---
 
-Create a new file and open it in `nano`:
+## 2. Compression with `gzip`
+
+Genomics files are often very large, frequently reaching several gigabytes. To reduce storage requirements, they are commonly compressed with `gzip`. Although these files contain binary data and cannot be read directly with standard text tools, you can still inspect them from the command line without decompressing them first.
+
+First, let’s try seeing zipped file using `head` command.
 
 ```bash
-touch my_text_file.txt
-nano my_text_file.txt
+head references/sc2/*.fasta.gz
 ```
 
-Inside `nano`, try the following:
+🎉 Congratulations! Instead of a readable FASTA file, you have discovered mysterious alien 👽 symbols — clear evidence that SARS-CoV-2 may have arrived from a galaxy far, far away.
 
-- write two or three lines
-- save with `Ctrl + O`
-- exit with `Ctrl + X`
-
-Show the result:
+What actually happened is that head is showing you the raw compressed binary data of the `.gz` file — which looks like nonsense. To properly look inside compressed FASTA files, you need to use tools that understand `gzip` compression, such as:
 
 ```bash
-cat my_text_file.txt
+zcat references/sc2/*.fasta.gz | head
 ```
 
-### Useful nano shortcuts
-
-- `Ctrl + O` — save
-- `Ctrl + X` — exit
-- `Ctrl + W` — search
-- `Ctrl + K` — cut a line
-- `Ctrl + U` — paste
-
-## 4. Compression with gzip
-
-Make a compressed copy of your file:
+Let's copy it in current working directory, and then uncompress it:
 
 ```bash
-cp notes.txt notes_copy.txt
-gzip notes_copy.txt
+cp references/sc2/*.fasta.gz . 
+
+# Uncompress but keep compressed file to compare sizes
+gunzip -k Wuhan-Hu-1_ASM985889v3.fasta.gz
+ls -lh
+
+# Remove gz file
+rm Wuhan-Hu-1_ASM985889v3.fasta.gz
+ls -lh 
+```
+
+To compress file:
+
+```bash
+gzip Wuhan-Hu-1_ASM985889v3.fasta
 ls -lh
 ```
 
-Uncompress it again:
-
-```bash
-gunzip notes_copy.txt.gz
-ls -lh
-```
-
-### Questions
+### 💬 Discussion
 
 - What changed in the file size?
-- Why is compression useful in bioinformatics?
+- Why is compression especially common for FASTA and FASTQ files?
+- What is the difference between `gzip` and `gunzip`?
 
-## 5. Work with gzipped files without unpacking them
+---
 
-Compress the file again:
+## 3. Inspect compressed files without unpacking them
+
+Try and compare these commands:
 
 ```bash
-gzip notes_copy.txt
+cat Wuhan-Hu-1_ASM985889v3.fasta.gz
 ```
 
-Now inspect it in different ways:
-
 ```bash
-cat notes_copy.txt.gz
+zcat Wuhan-Hu-1_ASM985889v3.fasta.gz
 ```
 
-The output above is not human-readable because the file is compressed.
-
-Use the gzip-aware tools instead:
-
 ```bash
-zcat notes_copy.txt.gz
-zcat notes_copy.txt.gz | head
-zcat notes_copy.txt.gz | tail
-zless notes_copy.txt.gz
+zcat Wuhan-Hu-1_ASM985889v3.fasta.gz | head
 ```
 
-### Questions
-
-- What is the difference between `cat` and `zcat` on a `.gz` file?
-- When would `zless` be useful?
-
-## 6. Search text with grep
-
-Search for a word in a text file:
+```bash
+zcat Wuhan-Hu-1_ASM985889v3.fasta.gz | tail
+```
 
 ```bash
-grep "Influenza" notes.txt
+zless Wuhan-Hu-1_ASM985889v3.fasta.gz
+```
+
+### 💬 Discussion
+
+- Why is `cat` not useful on a `.gz` file?
+- When is `zless` better than unzipping a large file first?
+
+---
+
+## 4. Search text with `grep`
+
+Let's copy one of the VCF files in our current working directory to explore it:
+
+```bash
+cp SRR32055875_irma_output/A_HA_H3.vcf .
+```
+
+Search for one word:
+
+```bash
+grep "PASS" A_HA_H3.vcf
+grep "FILTER" A_HA_H3.vcf
 ```
 
 Count matching lines:
 
 ```bash
-grep -c "Influenza" notes.txt
+grep -c "PASS" A_HA_H3.vcf
 ```
 
 Search case-insensitively:
 
 ```bash
-grep -i "bioinformatics" notes.txt
+grep -i "pAsS" A_HA_H3.vcf
 ```
 
 Search for lines that start with a pattern:
 
 ```bash
-grep "^sample" notes.txt
+grep "^>" Wuhan-Hu-1_ASM985889v3.fasta
+grep "^#" A_HA_H3.vcf
 ```
 
-### Questions
+### 💬 Discussion
 
 - What does `-c` do?
 - What does `-i` do?
-- What does `^sample` mean?
+- What does `^>` and `^#` mean?
 
-## 7. Combine commands with pipes
+---
+
+## 5. Pipes
 
 A pipe sends the output of one command into the next command.
 
 Examples:
 
 ```bash
-cat notes.txt | wc -l
+cat A_HA_H3.vcf | wc -l
 ```
 
 ```bash
-grep "Bioinformatics" notes.txt | less
+grep "PASS" A_HA_H3.vcf | wc -l
 ```
 
 ```bash
-zcat notes_copy.txt.gz | head
+grep "PASS" A_HA_H3.vcf | less
 ```
 
-### Questions
+```bash
+grep "PASS" A_HA_H3.vcf | head
+```
+
+### 💬 Discussion
 
 - Why is `|` useful?
-- Which part runs first in `zcat notes_copy.txt.gz | head`?
+- Which part runs first in `grep "PASS" A_HA_H3.vcf | less`?
 
-## 8. Optional bioinformatics example with FASTQ
+---
 
-If the repository contains a practice FASTQ file such as `data/ERR10453087.fastq.gz`, you can inspect it like this:
+## 6. Work with tabular data from the command line
 
-```bash
-cd ~/2026-Workshop-HSPA-Morocco/day_01
-cp ../data/ERR10453087.fastq.gz ./linux_text_practice/
-cd linux_text_practice
-```
-
-View the first records without unpacking the file permanently:
+Create a small CSV file:
 
 ```bash
-zcat ERR10453087.fastq.gz | head -n 12
+echo "Species,Serogroup,Country" > data.csv
+echo "Vibrio cholerae,O1,Germany" >> data.csv
+echo "Vibrio cholerae,O139,Ghana" >> data.csv
+echo "Vibrio cholerae,O139,Germany" >> data.csv
 ```
 
-Search for a sequence motif:
+Display it:
 
 ```bash
-zcat ERR10453087.fastq.gz | grep "AACACC"
+cat data.csv
 ```
 
-Count matching lines:
+### Extract columns with `cut`
+
+Get the `Serogroup` and `Country` columns:
 
 ```bash
-zcat ERR10453087.fastq.gz | grep -c "AACACC"
+cut -d "," -f 2-3 data.csv
 ```
 
-Estimate the number of FASTQ headers:
+Get only countries for serogroup `O139`:
 
 ```bash
-zcat ERR10453087.fastq.gz | grep -c "^@"
+grep "O139" data.csv | cut -d "," -f 3
 ```
 
-### Discussion
-
-- What are the four lines of a FASTQ record?
-- Why is counting `^@` only an estimate and not a perfect parser?
-
-## 9. Mini challenge
-
-In `linux_text_practice`, do the following:
-
-1. create a file called `animals.txt`
-2. add three animal names
-3. compress it
-4. display the first lines without unzipping it
-5. count how many lines contain the letter `a`
-
-One possible solution:
+### Sort values with `sort`
 
 ```bash
-printf "cat\ndog\nzebra\n" > animals.txt
-gzip animals.txt
-zcat animals.txt.gz | head
-zcat animals.txt.gz | grep -c "a"
+cut -d "," -f 3 data.csv | tail -n +2 | sort
 ```
+
+### Find unique values with `uniq`
+
+```bash
+cut -d "," -f 3 data.csv | tail -n +2 | sort | uniq
+```
+
+Count unique values:
+
+```bash
+cut -d "," -f 3 data.csv | tail -n +2 | sort | uniq -c
+```
+
+Save unique serogroups to a new file:
+
+```bash
+cut -d "," -f 2 data.csv | tail -n +2 | sort | uniq > unique_serogroup.txt
+```
+
+### Count lines with `wc`
+
+```bash
+wc data.csv
+wc -l data.csv
+wc -w data.csv
+```
+
+### 💬 Discussion
+
+- Why is `sort` usually needed before `uniq`?
+- What does `tail -n +2` do in the examples above?
+
+---
+
+## 7. Write your first Bash script
+
+Create a directory for scripts:
+
+```bash
+mkdir -p scripts
+cd scripts
+```
+
+Create a small script called `create_project.sh`:
+
+```bash
+nano create_project.sh
+```
+
+Paste this content:
+
+```bash
+#!/bin/bash
+
+TARGET_DIR=$1
+PROJECT_NAME=$2
+
+mkdir -p "$TARGET_DIR/$PROJECT_NAME"
+mkdir -p "$TARGET_DIR/$PROJECT_NAME/data"
+mkdir -p "$TARGET_DIR/$PROJECT_NAME/data/raw_data"
+mkdir -p "$TARGET_DIR/$PROJECT_NAME/data/references"
+mkdir -p "$TARGET_DIR/$PROJECT_NAME/analyses"
+mkdir -p "$TARGET_DIR/$PROJECT_NAME/scripts"
+mkdir -p "$TARGET_DIR/$PROJECT_NAME/docs"
+```
+
+Save and exit.
+
+### What this script introduces
+
+- `#!/bin/bash` — the shebang; tells the system to use Bash
+- `$1` — first argument
+- `$2` — second argument
+- `mkdir -p` — create directories, including parent directories if needed
+
+---
+
+## 8. Make the script executable and run it
+
+Give the script execute permission:
+
+```bash
+chmod +x create_project.sh
+```
+
+Run it explicitly with Bash:
+
+```bash
+bash create_project.sh ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace Demo_Project
+```
+
+Run it directly:
+
+```bash
+./create_project.sh ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace Demo_Project_2
+```
+
+Check the results:
+
+```bash
+tree ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace/Demo_Project
+```
+
+If `tree` is not installed:
+
+```bash
+ls -R ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace/Demo_Project
+```
+
+### 💬 Discussion
+
+- What is the difference between `bash create_project.sh ...` and `./create_project.sh ...`?
+- What happens if the script is not executable?
+
+---
+
+## 9. A simple loop script
+
+Create another script:
+
+```bash
+nano creating_files.sh
+```
+
+Paste this content:
+
+```bash
+#!/bin/bash
+
+for number in {1..4}; do
+  touch "file_${number}.txt"
+done
+```
+
+Make it executable and run it:
+
+```bash
+chmod +x creating_files.sh
+./creating_files.sh
+ls
+```
+
+### 💬 Discussion
+
+- What is brace expansion in `{1..4}`?
+- Why do we write `file_${number}.txt` instead of `file_$number.txt`?
+
+---
+
+## 10. Optional | conditional script
+
+Create one more script:
+
+```bash
+nano if_else.sh
+```
+
+Paste this content:
+
+```bash
+#!/bin/bash
+
+echo "Please enter a number:"
+read number
+
+if [ "$number" -gt 10 ]; then
+  echo "The number is greater than 10."
+elif [ "$number" -lt 10 ]; then
+  echo "The number is less than 10."
+else
+  echo "The number is equal to 10."
+fi
+```
+
+Run it:
+
+```bash
+chmod +x if_else.sh
+./if_else.sh
+```
+
+### 💬 Discussion
+
+- What happens if you enter `10`?
+- What happens if you enter a letter instead of a number?
+- Which operators compare numbers in Bash?
+
+---
+
+## 11. Mini challenge
+
+In `session_2_workspace`, do the following:
+
+1. create a CSV file with at least four rows
+2. extract one column with `cut`
+3. sort the values
+4. count unique values
+5. create a project folder with your script
+6. write a loop script that creates three `.txt` files
+
+---
 
 ## Quick reference
 
 | Command | Purpose |
 | --- | --- |
-| `cat` | Print a file to the terminal |
-| `less` | View a file page by page |
-| `head` | Show the first lines |
-| `tail` | Show the last lines |
-| `nano` | Edit a text file in the terminal |
+| `tar -xvzf` | Extract a `.tar.gz` archive |
 | `gzip` | Compress a file |
 | `gunzip` | Uncompress a `.gz` file |
-| `zcat` | Print the contents of a `.gz` file |
+| `zcat` | Print contents of a `.gz` file |
 | `zless` | View a `.gz` file page by page |
-| `grep` | Search for matching text |
+| `grep` | Search text |
 | `grep -c` | Count matching lines |
-| `|` | Send output from one command to another |
+| `cut` | Extract selected columns |
+| `sort` | Sort lines |
+| `uniq` | Remove consecutive duplicates |
+| `wc` | Count lines, words, or characters |
+| `chmod +x` | Make a file executable |
+| `bash script.sh` | Run a script with Bash |
+| `./script.sh` | Run an executable script directly |
+
+--- 
+
+## 12. Safer loop over text files
+
+Create a script called `basename_safe.sh`:
+
+```bash
+#!/bin/bash
+
+in_dir="$1"
+
+for file in "$in_dir"/*.txt; do
+  name=$(basename "${file%.txt}")
+  echo "$name"
+  echo "$file"
+  echo "------"
+done
+```
+
+Run it like this:
+
+```bash
+chmod +x basename_safe.sh
+./basename_safe.sh ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace/scripts
+```
+
+### 💬 Discussion
+
+- What does `basename` do here?
+- What is the difference between the shortened name and the full path?
 
 ---
 
-[🏠 Back to main page](../README.md)
+## 13. Counting bunnies with a loop
+
+Create `bunnies.sh`:
+
+```bash
+#!/bin/bash
+
+for n in $(seq 1 15); do
+  if [ "$n" -eq 1 ]; then
+    echo "$n bunny"
+  else
+    echo "$n bunnies"
+  fi
+done
+```
+
+Run it:
+
+```bash
+chmod +x bunnies.sh
+./bunnies.sh
+```
 
 ---
+
+## 14. Improve your script
+
+Choose one of your scripts to improve by adding one or more of the following:
+
+- a usage message when no arguments are given
+- a check that a directory exists before using it
+- clearer variable names
+- comments at the top of the script
+- quoted variables such as `"$1"` and `"$TARGET_DIR"`
+
+[⬅ Back to main page](../README.md)

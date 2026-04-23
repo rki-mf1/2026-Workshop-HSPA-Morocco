@@ -1,18 +1,12 @@
 # Day 01 — Linux Introduction
 
-## Overview
+## Participants self-assessment
 
-Day 01 introduces the Linux command line and basic filesystem operations that will be used throughout the workshop.
-
-Participants should work from a cloned copy of this repository in their home directory:
-
-```bash
-cd ~/2026-Workshop-HSPA-Morocco
-```
+- TODO
 
 ## Learning goals
 
-By the end of Day 01, participants should be able to:
+By the end of Day 01, you should be able to:
 
 - use the terminal with confidence
 - understand the current working directory
@@ -24,6 +18,29 @@ By the end of Day 01, participants should be able to:
 - work with `.gz` files
 - search text with `grep`
 - combine commands with pipes (`|`)
+
+## Setup
+
+Day 01 introduces the Linux command line and basic filesystem operations that will be used throughout the workshop.
+
+You should work from a cloned copy of this repository in your **home** directory (`~`).
+To clone this repository you need to have `git` installed. 
+You can check if you already have `git` by opening a **terminal**, typing `git --version` and pressing enter. 
+If you do not see git help message you should install it.
+
+### Installing Git
+
+```bash
+sudo apt-get install git
+```
+
+### Cloning workshop GitHub repo
+
+```bash
+cd ~
+git clone https://github.com/rki-mf1/2026-Workshop-HSPA-Morocco.git
+cd ~/2026-Workshop-HSPA-Morocco
+```
 
 ## Practicals
 
@@ -41,8 +58,5 @@ By the end of Day 01, participants should be able to:
 
 Please fill in this [daily feedback evaluation](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Daily-Feedback) at the end of the day.
 
----
 
 [⬅ Back to main page](../README.md)
-
----

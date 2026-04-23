@@ -1,4 +1,6 @@
-# Day 01 — Linux Basics, Navigation, and File Management
+[⬅ Back to main page](../README.md)
+
+# Linux Basics, Navigation, and File Management
 
 ## Learning goals
 
@@ -8,18 +10,12 @@ By the end of this lesson, you should be able to:
 - understand the current working directory
 - move through the filesystem with `cd`
 - understand `~`, `.`, `..`, absolute paths, and relative paths
-- create, copy, move, rename, and remove files and directories
+- create, edit, copy, move, rename, and remove files and directories
 - read built-in command documentation with `man` and `--help`
 
 ## Working assumption
 
-This lesson assumes students cloned the repository into their home directory:
-
-```bash
-git clone https://github.com/rki-mf1/2026-Workshop-HSPA-Morocco.git
-cd ~/2026-Workshop-HSPA-Morocco
-```
-
+This lesson assumes you cloned the repository into your **home** directory (`~`).
 All examples below use paths relative to that location.
 
 ## Before you start
@@ -61,7 +57,7 @@ ls -lh
 ls -lt
 ```
 
-### Questions
+### 💬 Discussion
 
 - What is the difference between `ls`, `ls -l`, and `ls -lh`?
 - What does `ls ..` show?
@@ -85,7 +81,7 @@ rm --help
 mkdir --help
 ```
 
-### Questions
+### 💬 Discussion
 
 - Which `ls` option shows human-readable file sizes?
 - Which `cp` option lets you copy directories recursively?
@@ -209,10 +205,39 @@ echo "Linux is powerful." >> notes.txt
 cat notes.txt
 ```
 
-### Questions
+### 💬 Discussion
 
 - What is the difference between `>` and `>>`?
 - Why is it useful to keep practice work in a separate directory?
+
+Create a new file and open it in `nano`:
+
+```bash
+touch my_text_file.txt
+nano my_text_file.txt
+```
+
+Inside `nano`, try the following:
+
+- write two or three lines
+- save with `Ctrl + O`
+- exit with `Ctrl + X`
+
+Show the result:
+
+```bash
+cat my_text_file.txt
+```
+
+### Useful nano shortcuts
+
+- `Ctrl + O` — save
+- `Ctrl + X` — exit
+- `Ctrl + W` — search
+- `Ctrl + K` — cut a line
+- `Ctrl + U` — paste
+
+
 
 ## 7. Copy files and directories
 
@@ -237,7 +262,7 @@ cp -r drafts drafts_copy
 ls
 ```
 
-### Questions
+### 💬 Discussion
 
 - When do you need `-r` with `cp`?
 - What is the difference between copying a file and copying a directory?
@@ -330,7 +355,7 @@ tail notes.txt
 - `p` — previous match
 - `Space` — next page
 
-### Questions
+### 💬 Discussion
 
 - When is `less` better than `cat`?
 - Which commands are more useful for large files?
@@ -368,6 +393,7 @@ head project_demo/readme.txt
 | `man <command>` | Open the manual |
 | `<command> --help` | Show short help |
 | `touch` | Create an empty file |
+| `nano` | Edit a text file in the terminal |
 | `mkdir` | Create a directory |
 | `cp` | Copy files or directories |
 | `mv` | Move or rename files or directories |
@@ -383,8 +409,4 @@ head project_demo/readme.txt
 
 [Next tutorial](./02_linux-view-edit-search.md)
 
----
-
-[🏠 Back to main page](../README.md)
-
----
+[⬅ Back to main page](../README.md)
