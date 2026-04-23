@@ -1,3 +1,7 @@
+[🏠 Back to main page](../README.md)
+
+---
+
 # Day 01 — Linux Basics, Navigation, and File Management
 
 ## Learning goals
@@ -27,7 +31,14 @@ All examples below use paths relative to that location.
 Open a terminal and move into the workshop repository:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco
+cd ~/2026-Workshop-HSPA-Morocco/day_01
+```
+
+Create a safe practice area for this session:
+
+```bash
+mkdir -p scratch
+cd scratch
 ```
 
 Check where you are:
@@ -75,6 +86,7 @@ ls --help
 cp --help
 mv --help
 rm --help
+mkdir --help
 ```
 
 ### Questions
@@ -86,9 +98,9 @@ rm --help
 
 Try these shortcuts:
 
-- Press the **Up Arrow** to reuse previous commands.
-- Type `cle` and press **Tab**.
-- Start typing `cd ~/2026` and press **Tab** for autocompletion.
+- Press the `↑`**Up Arrow** to reuse previous commands.
+- Type `cle` and press `Tab`.
+- Start typing `cd ~/2026` and press `Tab` for autocompletion.
 
 Linux is case-sensitive:
 
@@ -166,18 +178,16 @@ cd ..
 cd ./day_01
 ```
 
-## 6. Create a safe practice area
+## 6. Create files and directories
 
-To avoid modifying teaching materials, create a scratch directory for practice:
+Return to your scratch directory:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco/day_01
-mkdir -p linux_practice
-cd linux_practice
+cd ~/2026-Workshop-HSPA-Morocco/day_01/scratch
 pwd
 ```
 
-## 7. Create files and directories
+Create files and directories
 
 Create a few files and folders:
 
@@ -208,7 +218,7 @@ cat notes.txt
 - What is the difference between `>` and `>>`?
 - Why is it useful to keep practice work in a separate directory?
 
-## 8. Copy files
+## 7. Copy files and directories
 
 Copy a file into another file:
 
@@ -231,7 +241,13 @@ cp -r drafts drafts_copy
 ls
 ```
 
-## 9. Move and rename files
+### Questions
+
+- When do you need `-r` with `cp`?
+- What is the difference between copying a file and copying a directory?
+
+
+## 8. Move and rename files
 
 Move a file into another directory:
 
@@ -254,7 +270,7 @@ mv renamed_file.txt drafts/final_notes.txt
 ls drafts
 ```
 
-## 10. Remove files and directories
+## 9. Remove files and directories
 
 Remove a file:
 
@@ -266,7 +282,8 @@ ls drafts
 Remove an empty directory:
 
 ```bash
-rmdir results
+mkdir empty_dir
+rmdir empty_dir
 ```
 
 Remove a directory and everything inside it:
@@ -275,33 +292,74 @@ Remove a directory and everything inside it:
 rm -r drafts_copy
 ```
 
-Be careful with `rm`. Deleted files are usually not easy to recover.
+> [!CAUTION]
+> Be careful with `rm`, especially with `rm -r`. Deleted files do not go to a recycle bin.
+
+### Question
+
+- Why is `rm -r` more dangerous than `rm`?
+- What is the difference between `rmdir` and `rm -r`?
+
+## 10. View file contents
+
+Use the file you already created:
+
+```bash
+cat notes.txt
+```
+
+Open it page by page:
+
+```bash
+less notes.txt
+```
+
+Show only the first lines:
+
+```bash
+head notes.txt
+```
+
+Show only the last lines:
+
+```bash
+tail notes.txt
+```
+
+### Useful `less` controls
+
+- `q` — quit
+- `/pattern` — search inside the file
+- `n` — next match
+- `p` — previous match
+- `Space` — next page
+
+### Questions
+
+- When is `less` better than `cat`?
+- Which commands are more useful for large files?
+
 
 ## 11. Mini challenge
 
-Complete the following workflow:
+In `scratch` directory you created earlier, do the following:
+
+1. create a directory called `project_demo`
+2. create a file called `readme.txt` inside it
+3. write one line into that file (e.g. "I love whales")
+4. copy the file to `readme_backup.txt`
+5. rename `readme_backup.txt` to `notes_backup.txt`
+6. show the first lines of the original `readme.txt` file
+
+One possible solution:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco/day_01/linux_practice
-mkdir my_tmp_dir
-cp notes.txt my_tmp_dir/
-mv my_tmp_dir copied_notes
-ls -R
-```
-
-Now answer:
-
-- Which object was created?
-- Which command copied data?
-- Which command renamed data?
-
-## 12. Clean up
-
-If you want to remove your practice directory at the end:
-
-```bash
-cd ~/2026-Workshop-HSPA-Morocco/day_01
-rm -r linux_practice
+cd ~/2026-Workshop-HSPA-Morocco/day_01/scratch
+mkdir project_demo
+echo "I love whales" > project_demo/readme.txt
+cp project_demo/readme.txt project_demo/readme_backup.txt
+mv project_demo/readme_backup.txt project_demo/notes_backup.txt
+head project_demo/readme.txt
 ```
 
 ## Quick reference
@@ -320,7 +378,17 @@ rm -r linux_practice
 | `rm` | Remove files |
 | `rm -r` | Remove directories recursively |
 | `rmdir` | Remove an empty directory |
+| `cat` | Print a file |
+| `less` | View a file page by page |
+| `head` | Show first lines |
+| `tail` | Show last lines |
 
-## Next tutorial
+---
 
-Continue with **Day 01 — Viewing, Editing, Compressing, and Searching Files**.
+[Next tutorial](./02_linux-view-edit-search.md)
+
+---
+
+[🏠 Back to main page](../README.md)
+
+---

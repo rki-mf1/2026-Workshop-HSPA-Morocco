@@ -1,3 +1,7 @@
+[🏠 Back to main page](../README.md)
+
+---
+
 # Day 01 — Viewing, Editing, Compressing, and Searching Files
 
 ## Learning goals
@@ -280,3 +284,9 @@ zcat animals.txt.gz | grep -c "a"
 | `grep` | Search for matching text |
 | `grep -c` | Count matching lines |
 | `|` | Send output from one command to another |
+
+---
+
+[🏠 Back to main page](../README.md)
+
+---
